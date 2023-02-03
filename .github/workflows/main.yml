@@ -10,9 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      ORG_GRADLE_PROJECT_GitHubPackagesUsername: ${{ github.actor }}
-      ORG_GRADLE_PROJECT_GitHubPackagesPassword: ${{ secrets.GITHUBPACKAGESPASSWORD }}
     steps:
       - uses: actions/checkout@v3
       - uses: gradle/wrapper-validation-action@v1
@@ -23,6 +20,3 @@ jobs:
       - uses: gradle/gradle-build-action@v2
       - name: Build with Gradle
         run: ./gradlew build
-      - run: LD_LIBRARY_PATH=$LD_LIBRARY_PATH:hello/build/bin/linuxX64/debugShared java -Djava.library.path=helloc/build/bin/linuxX64/debugShared -jar build/libs/kotlinJni.jar
-      - run: gcc -shared helloCobol/hello.c -o libhelloc.so -fPIC -I ${JAVA_HOME}/include -I ${JAVA_HOME}/include/linux -I hello/build/bin/linuxX64/debugShared -lhello -Lhello/build/bin/linuxX64/debugShared
-      - run: LD_LIBRARY_PATH=$LD_LIBRARY_PATH:hello/build/bin/linuxX64/debugShared java -jar -Djava.library.path=. build/libs/kotlinJni.jar
