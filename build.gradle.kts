@@ -11,3 +11,5 @@ dependencies {
 }
 
 kotlin.jvmToolchain(8)
+
+version = "1.0.7"
