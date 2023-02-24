@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.xerial:sqlite-jdbc:3.36.0.3")
+    implementation("org.xerial:sqlite-jdbc:3.41.0.0")
 }
 
 kotlin.jvmToolchain(8)
